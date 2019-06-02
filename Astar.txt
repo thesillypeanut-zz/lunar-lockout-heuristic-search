@@ -1,0 +1,15 @@
+Alternate Heuristic Description
+
+This is an extension of the L-distance heuristic and takes rewards and penalties into account along the L-path. Rewards decrease the h-value while penalties increase it. The method returns the sum of h-values for all xanadus.
+
+For each xanadu, it first checks whether it is at any of the four corners of the board, away from all robots. If it is, the method terminates and returns a large number since such a corner xanadu cannot be guided to the exit.
+
+If it is not a corner xanadu, h-value is calculated along the L-path from the xanadu to the exit. H-value calculation for the L-path is broken down into vertical and horizontal subpaths and then added together. Two L-distances are calculated for a xanadu that does not have the same x or y coordinates as the exit and the max is taken. For every robot encountered on a subpath, L-distance is increased by one to account for the additional move required for the robot to move out of the way. However, if there is another xanadu at the opposite end of the board, along the same horizontal/vertical line but not directly on the subpath, we can assume that this xanadu will help remove the robot first and so L-distance is not increased. Lastly, L-distance is increased by one if there is a robot at the end of the subpath to help guide the xanadu along this subpath, two otherwise.
+
+1.
+
+  Admissibility implies optimality. Since admissible heuristics must always underestimate cost to the goal, we should decrease the heuristic value by 20%, which is the upper bound on the amount the heuristic may overestimate, in order to guarantee the algorithm will find an optimal solution if one exists.
+
+2.
+
+  False, because manhattan distance will be an overestimate, thus inadmissible, when there is an unobstructed path from a xanadu to the exit (with helper robots already in the ideal positions to guide it).
