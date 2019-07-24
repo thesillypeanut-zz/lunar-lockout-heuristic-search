@@ -1,4 +1,4 @@
-# lunar-lockout-search
+# lunar-lockout-heuristic-search
 
 A working solver for the puzzle game Lunar Lockout is implemented using Anytime Weighted A-star search. Different heuristics are designed to suplement the search: L-distance, Manhattan distance and Extended L-distance (heur_alternate).
 
